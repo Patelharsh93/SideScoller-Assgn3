@@ -6,13 +6,13 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // Fuel Class ++++++++++++++++++++++++++++++++++++++
+    // fuel Class ++++++++++++++++++++++++++++++++++++++
     var Fuel = (function (_super) {
         __extends(Fuel, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         function Fuel(imageString) {
             _super.call(this, imageString);
-            this.dy = 5;
+            this.dx = 5;
             this.name = "fuel";
             this.sound = "powerup";
             this.reset();
@@ -20,17 +20,17 @@ var objects;
         // PRIVATE METHODS ++++++++++++++++++++++++++++++
         Fuel.prototype.checkBounds = function () {
             // check if fuel has left screen
-            if (this.x < 640 + this.height) {
+            if (this.x < 0 - 480) {
                 this.reset();
             }
         };
         Fuel.prototype.reset = function () {
             this.y = Math.floor(Math.random() * 480); // start fuel at random location
-            this.x = -this.height; // start fuel off stage
+            this.x = +640; // start fuel off stage
         };
         // PUBLIC METHODS +++++++++++++++++++++++++++++++
         Fuel.prototype.update = function () {
-            this.x -= this.dy; // moves fuel down the stage
+            this.x -= this.dx; // moves fuel down the stage
             this.checkBounds();
         };
         return Fuel;

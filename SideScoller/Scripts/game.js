@@ -3,23 +3,35 @@
 /// <reference path="typings/tweenjs/tweenjs.d.ts" />
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
+/// <reference path="utility/utility.ts" />
 /// <reference path="objects/gameobject.ts" />
+/// <reference path="objects/city.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/fuel.ts" />
+/// <reference path="objects/fire.ts" />
+/// <reference path="objects/scoreboard.ts" />
+/// <reference path="managers/collision.ts" />
 //Game framework variable
 var canvas = document.getElementById("canvas");
 var stage;
 var stats;
 var assets;
 var manifest = [
+    { id: "city", src: "assets/images/city.jpg" },
     { id: "plane", src: "assets/images/plane.png" },
     { id: "fuel", src: "assets/images/fuel.png" },
+    { id: "fire", src: "assets/images/fire.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "powerup", src: "assets/audio/powerup.wav" },
 ];
 //Game variables
+var city;
 var plane;
 var fuel;
+var fires = [];
+var scoreBoard;
+// Game Managers
+var collision;
 //preloaded Function
 function preload() {
     assets = new createjs.LoadQueue();
@@ -53,8 +65,14 @@ function setupStats() {
 //Call back function that creates our main gameLoop- refresed 60 fps
 function gameLoop() {
     stats.begin(); //Begin measuring
+    city.update();
     plane.update();
     fuel.update();
+    for (var fire = 0; fire < 4; fire++) {
+        fires[fire].update();
+    }
+    collision.check(fuel);
+    scoreBoard.update();
     stage.update();
     stats.end(); //
 }
@@ -64,11 +82,23 @@ function pinkButtonClicked(event) {
 }
 //Our main function
 function main() {
+    // add city object to stage
+    city = new objects.City(assets.getResult("city"));
+    stage.addChild(city);
     // add plane object to stage
     plane = new objects.Plane(assets.getResult("plane"));
     stage.addChild(plane);
+    // add 3 fire objects to stage
+    for (var fire = 0; fire < 4; fire++) {
+        fires[fire] = new objects.Fire(assets.getResult("fire"));
+        stage.addChild(fires[fire]);
+    }
     //add fuel object to stage
     fuel = new objects.Fuel(assets.getResult("fuel"));
     stage.addChild(fuel);
+    //add scoreboard
+    scoreBoard = new objects.scoreboard();
+    //add collision manager
+    collision = new managers.Collision();
 }
 //# sourceMappingURL=game.js.map
