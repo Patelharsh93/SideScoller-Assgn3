@@ -21,7 +21,7 @@
                 if (gameObject.isColliding == false) {
                     createjs.Sound.play(gameObject.sound);
                     if (gameObject.name == "fire") {
-                        scoreBoard.lives--;
+                        scoreBoard.lives -= 1;
                     }
                     if (gameObject.name == "fuel") {
                         scoreBoard.score += 100;

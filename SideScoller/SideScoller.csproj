@@ -60,10 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\audio\powerup.wav" />
+    <Content Include="assets\audio\thunder.wav" />
     <Content Include="assets\images\city.jpg" />
-    <Content Include="assets\images\fire.png" />
     <Content Include="assets\images\fuel.png" />
-    <Content Include="assets\images\plane.png" />
+    <Content Include="assets\images\plane2.png" />
+    <Content Include="assets\images\rocket.png" />
     <Content Include="packages.config" />
     <Content Include="assets\audio\engine.ogg" />
     <None Include="Web.Debug.config">
@@ -93,10 +94,10 @@
     <TypeScriptCompile Include="Scripts\game.ts" />
     <TypeScriptCompile Include="Scripts\managers\collision.ts" />
     <TypeScriptCompile Include="Scripts\objects\city.ts" />
-    <TypeScriptCompile Include="Scripts\objects\fire.ts" />
     <TypeScriptCompile Include="Scripts\objects\fuel.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
     <TypeScriptCompile Include="Scripts\objects\plane.ts" />
+    <TypeScriptCompile Include="Scripts\objects\fire.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />

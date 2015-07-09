@@ -18,11 +18,12 @@ var stats;
 var assets;
 var manifest = [
     { id: "city", src: "assets/images/city.jpg" },
-    { id: "plane", src: "assets/images/plane.png" },
+    { id: "plane", src: "assets/images/plane2.png" },
     { id: "fuel", src: "assets/images/fuel.png" },
-    { id: "fire", src: "assets/images/fire.png" },
+    { id: "fire", src: "assets/images/rocket.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "powerup", src: "assets/audio/powerup.wav" },
+    { id: "thunder", src: "assets/audio/thunder.wav" }
 ];
 //Game variables
 var city;
