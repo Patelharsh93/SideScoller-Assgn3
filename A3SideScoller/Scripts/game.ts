@@ -56,7 +56,7 @@ function preload() {
 }
 
 
-//Callback function that intializies game objects
+
 function init() {
     stage = new createjs.Stage(canvas);  //refrence to the stage
     stage.enableMouseOver(20);
@@ -84,6 +84,8 @@ function setupStats() {
 //Call back function that creates our main gameLoop- refresed 60 fps
 function gameLoop() {
     stats.begin(); //Begin measuring
+
+    //update functions
     city.update();
 
     plane.update();
