@@ -17,7 +17,7 @@ var managers;
                 if (gameObject.isColliding == false) {
                     createjs.Sound.play(gameObject.sound);
                     if (gameObject.name == "rocket") {
-                        scoreBoard.lives -= 1;
+                        scoreBoard.lives--;
                     }
                     if (gameObject.name == "fuel") {
                         scoreBoard.score += 100;

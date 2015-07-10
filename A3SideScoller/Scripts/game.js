@@ -11,6 +11,7 @@
 /// <reference path="objects/fire.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="managers/collision.ts" />
+/// <reference path="states/play.ts" />
 //Game framework variable
 var canvas = document.getElementById("canvas");
 var stage;
@@ -25,14 +26,17 @@ var manifest = [
     { id: "powerup", src: "assets/audio/powerup.wav" },
     { id: "thunder", src: "assets/audio/thunder.wav" },
 ];
-//Game variables
+// Game Variables
 var city;
 var plane;
 var fuel;
 var fires = [];
 var scoreBoard;
+var game;
 // Game Managers
 var collision;
+// Game States
+var play;
 //preloaded Function
 function preload() {
     assets = new createjs.LoadQueue();
@@ -43,7 +47,6 @@ function preload() {
     //Setup statics object
     setupStats();
 }
-//Callback function that intializies game objects
 function init() {
     stage = new createjs.Stage(canvas); //refrence to the stage
     stage.enableMouseOver(20);
@@ -51,7 +54,7 @@ function init() {
     createjs.Ticker.setFPS(60); //framerate for the game
     //event listener triggers 60 ms times every second
     createjs.Ticker.on("tick", gameLoop);
-    //Calling main Function
+    // calling main game function
     main();
 }
 function setupStats() {
@@ -66,14 +69,7 @@ function setupStats() {
 //Call back function that creates our main gameLoop- refresed 60 fps
 function gameLoop() {
     stats.begin(); //Begin measuring
-    city.update();
-    plane.update();
-    fuel.update();
-    for (var fire = 0; fire < 4; fire++) {
-        fires[fire].update();
-    }
-    collision.check(fuel);
-    scoreBoard.update();
+    play.update();
     stage.update();
     stats.end(); //
 }
@@ -81,25 +77,13 @@ function gameLoop() {
 function pinkButtonClicked(event) {
     createjs.Sound.play("clicked");
 }
-//Our main function
+// Our Main Game Function
 function main() {
-    // add city object to stage
-    city = new objects.City(assets.getResult("city"));
-    stage.addChild(city);
-    // add plane object to stage
-    plane = new objects.Plane(assets.getResult("plane"));
-    stage.addChild(plane);
-    // add 3 fire objects to stage
-    for (var fire = 0; fire < 4; fire++) {
-        fires[fire] = new objects.Fire(assets.getResult("rocket"));
-        stage.addChild(fires[fire]);
-    }
-    //add fuel object to stage
-    fuel = new objects.Fuel(assets.getResult("fuel"));
-    stage.addChild(fuel);
-    //add scoreboard
-    scoreBoard = new objects.scoreboard();
-    //add collision manager
-    collision = new managers.Collision();
+    // instantiate new game container
+    game = new createjs.Container();
+    // instantiate play state
+    play = new states.Play();
+    //add game container to stage
+    stage.addChild(game);
 }
 //# sourceMappingURL=game.js.map
