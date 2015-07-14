@@ -16,6 +16,9 @@ var managers;
             if (utility.distance(p1, p2) < ((plane.height * 0.5) + (gameObject.height * 0.5))) {
                 if (gameObject.isColliding == false) {
                     createjs.Sound.play(gameObject.sound);
+                    if (scoreBoard.lives == 0) {
+                        end.update();
+                    }
                     if (gameObject.name == "rocket") {
                         scoreBoard.lives--;
                     }

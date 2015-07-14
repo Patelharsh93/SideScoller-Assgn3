@@ -11,7 +11,9 @@
 /// <reference path="objects/fire.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="managers/collision.ts" />
+/// <reference path="states/start.ts" />
 /// <reference path="states/play.ts" />
+/// <reference path="states/end.ts" />
 //Game framework variable
 var canvas = document.getElementById("canvas");
 var stage;
@@ -22,6 +24,9 @@ var manifest = [
     { id: "plane", src: "assets/images/plane2.png" },
     { id: "fuel", src: "assets/images/fuel.png" },
     { id: "rocket", src: "assets/images/rocket.png" },
+    { id: "startgame", src: "assets/images/startgame1.png" },
+    { id: "again", src: "assets/images/playagain1.png" },
+    { id: "instruction", src: "assets/images/instructions.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "powerup", src: "assets/audio/powerup.wav" },
     { id: "thunder", src: "assets/audio/thunder.wav" },
@@ -30,13 +35,22 @@ var manifest = [
 var city;
 var plane;
 var fuel;
+var again;
+var startgame;
+var instructions;
 var fires = [];
 var scoreBoard;
 var game;
+//text varaibles
+var gameOver;
+var finalScore;
 // Game Managers
 var collision;
 // Game States
+var stateName = "start";
+var start;
 var play;
+var end;
 //preloaded Function
 function preload() {
     assets = new createjs.LoadQueue();
@@ -69,7 +83,31 @@ function setupStats() {
 //Call back function that creates our main gameLoop- refresed 60 fps
 function gameLoop() {
     stats.begin(); //Begin measuring
-    play.update();
+    /*
+    start.update();
+
+    if (startgame.on.call) {
+        play.update();
+    }
+    else if (again.on.call)
+    {
+        play.update();
+    }
+    if (scoreBoard.lives == 0)
+    {
+        end.update();
+    }
+    */
+    if (stateName == "start") {
+        start.update();
+    }
+    else if (stateName == "play") {
+        play.update();
+    }
+    else if (stateName == "end") {
+        end.update();
+    }
+    stage.update();
     stage.update();
     stats.end(); //
 }
@@ -81,8 +119,8 @@ function pinkButtonClicked(event) {
 function main() {
     // instantiate new game container
     game = new createjs.Container();
-    // instantiate play state
-    play = new states.Play();
+    //// instantiate start state
+    start = new states.Start();
     //add game container to stage
     stage.addChild(game);
 }
