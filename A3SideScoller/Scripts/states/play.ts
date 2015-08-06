@@ -2,8 +2,7 @@
     export class Play {
 
         //Constructor+++++++++++++++++++++++++++
-        constructor()
-        {
+        constructor() {
             this.main();
         }
         //PUBLIC METHODS
@@ -21,10 +20,23 @@
                 collision.check(fires[fire]);
             }
             collision.check(fuel);
-            
+
+            this.checkLives();
+
             scoreBoard.update();
         }
 
+        public checkLives()
+        {
+            if (scoreBoard.lives < 1)
+            {
+                plane.engine.stop();
+                game.removeAllChildren(); 
+                currentState = config.END_STATE;
+                changeState();
+            }
+        }
+    
 
 //Our main function
          main() {

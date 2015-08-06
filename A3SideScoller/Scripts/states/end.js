@@ -10,7 +10,8 @@ var states;
             again.update();
         };
         End.prototype.againClicked = function (event) {
-            play.update();
+            currentState = config.PLAY_STATE;
+            changeState();
         };
         End.prototype.main = function () {
             //instantiate new game container
@@ -19,19 +20,15 @@ var states;
             city = new objects.City(assets.getResult("city"));
             game.addChild(city);
             // Add Game Over Label
-            gameOver = new createjs.Text("GAME OVER", "70px", "#2EFE2E");
+            gameOver = new objects.Label("GAME OVER", config.FONT_MEDIUM, config.FONT_FAMILY, config.GREEN, 350, 200);
             gameOver.textAlign = "center";
-            gameOver.x = 100;
-            gameOver.y = 100;
             game.addChild(gameOver);
             //  Final Score            
-            finalScore = new createjs.Text("FINAL SCORE: " + scoreBoard.score, "50px", "#2EFE2E");
+            finalScore = new objects.Label("FINAL SCORE: " + scoreBoard.score, config.FONT_SMALL, config.FONT_FAMILY, config.GREEN, 350, 250);
             finalScore.textAlign = "center";
-            finalScore.x = 100;
-            finalScore.y = 200;
             game.addChild(finalScore);
             // add play again to stage
-            again = new objects.Button(assets.getResult("again"), 100, 400);
+            again = new objects.Button(assets.getResult("again"), 250, 300);
             game.addChild(again);
             again.on("click", this.againClicked);
         };

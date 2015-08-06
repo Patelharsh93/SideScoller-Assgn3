@@ -27,7 +27,8 @@
 
         public instructionsClick(event:MouseEvent)
         {
-
+            currentState = config.INSTRUCTION_STATE;
+            changeState();
         }
 
 

@@ -18,6 +18,8 @@ var states;
             changeState();
         };
         Start.prototype.instructionsClick = function (event) {
+            currentState = config.INSTRUCTION_STATE;
+            changeState();
         };
         //main function
         Start.prototype.main = function () {

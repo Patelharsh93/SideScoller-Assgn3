@@ -19,9 +19,10 @@
 /// <reference path="objects/label.ts" />
 /// <reference path="managers/collision.ts" />
 
+/// <reference path="states/instructions.ts" />
+/// <reference path="states/end.ts" />
 /// <reference path="states/start.ts" />
 /// <reference path="states/play.ts" />
-/// <reference path="states/end.ts" />
 
 //Game framework variable
 
@@ -56,9 +57,10 @@ var fires = [];
 var scoreBoard: objects.scoreboard;
 var game: createjs.Container;
 
-//text varaibles
-var gameOver: createjs.Text;
-var finalScore: createjs.Text;
+//label varaible
+var instructionLabel: objects.Label;
+var gameOver: objects.Label;
+var finalScore: objects.Label;
 
 // Game Managers
 
@@ -68,8 +70,10 @@ var collision: managers.Collision;
 var currentStateFunction;
 var currentState: number;
 var start: states.Start;
-var play: states.Play;
+var instruction: states.Instruction;
 var end: states.End;
+var play: states.Play;
+
 
 
 //preloaded Function
@@ -141,6 +145,9 @@ function changeState() {
             break;
 
         case config.INSTRUCTION_STATE:
+            //// instantiate instruction state
+            instruction = new states.Instruction();
+            currentStateFunction = instruction;
             break;
 
         case config.PLAY_STATE:
@@ -150,6 +157,9 @@ function changeState() {
             break;
 
         case config.END_STATE:
+            //// instantiate end state
+            end = new states.End();
+            currentStateFunction = end;
             break;
     }
     

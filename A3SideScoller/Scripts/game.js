@@ -14,9 +14,10 @@
 /// <reference path="objects/button.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="managers/collision.ts" />
+/// <reference path="states/instructions.ts" />
+/// <reference path="states/end.ts" />
 /// <reference path="states/start.ts" />
 /// <reference path="states/play.ts" />
-/// <reference path="states/end.ts" />
 //Game framework variable
 var canvas = document.getElementById("canvas");
 var stage;
@@ -44,7 +45,8 @@ var instructions;
 var fires = [];
 var scoreBoard;
 var game;
-//text varaibles
+//label varaible
+var instructionLabel;
 var gameOver;
 var finalScore;
 // Game Managers
@@ -53,8 +55,9 @@ var collision;
 var currentStateFunction;
 var currentState;
 var start;
-var play;
+var instruction;
 var end;
+var play;
 //preloaded Function
 function preload() {
     assets = new createjs.LoadQueue();
@@ -108,6 +111,9 @@ function changeState() {
             currentStateFunction = start;
             break;
         case config.INSTRUCTION_STATE:
+            //// instantiate instruction state
+            instruction = new states.Instruction();
+            currentStateFunction = instruction;
             break;
         case config.PLAY_STATE:
             //// instantiate start state
@@ -115,6 +121,9 @@ function changeState() {
             currentStateFunction = play;
             break;
         case config.END_STATE:
+            //// instantiate end state
+            end = new states.End();
+            currentStateFunction = end;
             break;
     }
     //add game container to stage
