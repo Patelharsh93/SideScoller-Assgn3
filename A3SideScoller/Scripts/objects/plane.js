@@ -14,7 +14,7 @@ var objects;
             _super.call(this, imageString);
             this.sound = "engine";
             this.x = 100;
-            createjs.Sound.play(this.sound, { "loop": -1 });
+            this.engine = createjs.Sound.play(this.sound, { "loop": -1 });
         }
         // PUBLIC METHODS +++++++++++++++++++++++++++++++
         Plane.prototype.update = function () {

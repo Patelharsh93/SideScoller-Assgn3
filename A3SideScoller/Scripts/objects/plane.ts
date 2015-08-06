@@ -1,13 +1,14 @@
 ﻿module objects {
     // Plane Class ++++++++++++++++++++++++++++++++++++++
     export class Plane extends objects.gameobject {
-
+        //PUBLIC PROPERTIES++++++++++++++++++++++++++++++
+        engine: createjs.AbstractSoundInstance;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         constructor(imageString: string) {
             super(imageString);
             this.sound = "engine";
             this.x = 100;
-            createjs.Sound.play(this.sound, { "loop": -1 });
+            this.engine= createjs.Sound.play(this.sound, { "loop": -1 });
 
         }
 

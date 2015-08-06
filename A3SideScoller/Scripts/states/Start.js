@@ -8,16 +8,16 @@ var states;
         //Public Methods
         //Update method
         Start.prototype.update = function () {
-            startgame.update();
+            startgame1.update();
             instructions.update();
         };
         //clicked events
-        Start.prototype.startgameClicked = function (event) {
+        Start.prototype.startgameClick = function (event) {
             game.removeAllChildren();
-            stateName = "play";
-            play = new states.Play();
+            currentState = config.PLAY_STATE;
+            changeState();
         };
-        Start.prototype.instructionsClicked = function (event) {
+        Start.prototype.instructionsClick = function (event) {
         };
         //main function
         Start.prototype.main = function () {
@@ -26,14 +26,18 @@ var states;
             // add city object to stage
             city = new objects.City(assets.getResult("city"));
             game.addChild(city);
+            // add Mail Pilot Label
+            var label = new objects.Label("SIDE SCROLLER", config.FONT_EXTRA_LARGE, config.FONT_FAMILY, config.YELLOW, 320, 140);
+            game.addChild(label);
             // add start game to stage
-            startgame = new objects.Button(assets.getResult("startgame"), 100, 200);
-            game.addChild(startgame);
-            startgame.on("click", this.startgameClicked);
-            // add play again to stage
-            instructions = new objects.Button(assets.getResult("instruction"), 100, 400);
+            startgame1 = new objects.Button(assets.getResult("startgame1"), 250, 300);
+            game.addChild(startgame1);
+            startgame1.on("click", this.startgameClick);
+            // add instruction to stage
+            instructions = new objects.Button(assets.getResult("instructions"), 250, 400);
             game.addChild(instructions);
-            instructions.on("click", this.instructionsClicked);
+            instructions.on("click", this.instructionsClick);
+            stage.addChild(game);
         };
         return Start;
     })();
