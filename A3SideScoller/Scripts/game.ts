@@ -9,6 +9,7 @@
 
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/city.ts" />
+/// <reference path="objects/playercontrol.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/fuel.ts" />
 /// <reference path="objects/fire.ts" />
@@ -48,7 +49,7 @@ var manifest = [
 
 // Game Variables
 var city: objects.City;
-var plane: objects.Plane;
+var plane: objects.playerControl;
 var fuel: objects.Fuel;
 var again: objects.Button;
 var startgame1: objects.Button;

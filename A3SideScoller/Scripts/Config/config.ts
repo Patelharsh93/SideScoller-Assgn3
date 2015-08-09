@@ -21,4 +21,26 @@
     export const INSTRUCTION_STATE: number = 1;
     export const PLAY_STATE: number = 2;
     export const END_STATE: number = 3;
+
+    // key constants
+    export var KEY_BACK: number = 37;
+    export var KEY_FORWARD: number = 39;
+    export var KEY_UP: number = 38;
+    export var KEY_DOWN: number = 40;
+    export var KEY_SPACE: number = 32;
+    export var KEY_A: number = 65;
+    export var KEY_S: number = 83;
+    export var KEY_D: number = 68;
+    export var KEY_W: number = 87;
+
+    // control constants
+    export var FORWARD: boolean = false;
+    export var BACK: boolean = false;
+    export var UP: boolean = false;
+    export var DOWN: boolean = false;
+
+    // PlayerControl constants
+    export var PLAYER_MOVEMENT: number = 5;
+    export var PLAYER_UP: number = 5;
+    export var PLAYER_DOWN: number = 5;
 } 

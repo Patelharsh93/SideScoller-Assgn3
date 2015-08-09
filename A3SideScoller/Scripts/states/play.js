@@ -22,7 +22,6 @@ var states;
         };
         Play.prototype.checkLives = function () {
             if (scoreBoard.lives < 1) {
-                plane.engine.stop();
                 game.removeAllChildren();
                 currentState = config.END_STATE;
                 changeState();
@@ -36,7 +35,7 @@ var states;
             city = new objects.City(assets.getResult("city"));
             game.addChild(city);
             // add plane object to stage
-            plane = new objects.Plane(assets.getResult("plane"));
+            plane = new objects.playerControl(assets.getResult("plane"));
             game.addChild(plane);
             // add 3 fire objects to stage
             for (var fire = 0; fire < 4; fire++) {

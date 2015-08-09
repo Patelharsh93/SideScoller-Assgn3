@@ -18,5 +18,24 @@ var config;
     config.INSTRUCTION_STATE = 1;
     config.PLAY_STATE = 2;
     config.END_STATE = 3;
+    // key constants
+    config.KEY_BACK = 37;
+    config.KEY_FORWARD = 39;
+    config.KEY_UP = 38;
+    config.KEY_DOWN = 40;
+    config.KEY_SPACE = 32;
+    config.KEY_A = 65;
+    config.KEY_S = 83;
+    config.KEY_D = 68;
+    config.KEY_W = 87;
+    // control constants
+    config.FORWARD = false;
+    config.BACK = false;
+    config.UP = false;
+    config.DOWN = false;
+    // PlayerControl constants
+    config.PLAYER_MOVEMENT = 5;
+    config.PLAYER_UP = 5;
+    config.PLAYER_DOWN = 5;
 })(config || (config = {}));
 //# sourceMappingURL=config.js.map

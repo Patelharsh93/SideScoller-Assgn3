@@ -13,6 +13,7 @@
 
             plane.update();
 
+            
             fuel.update();
 
             for (var fire = 0; fire < 4; fire++) {
@@ -30,7 +31,7 @@
         {
             if (scoreBoard.lives < 1)
             {
-                plane.engine.stop();
+                 
                 game.removeAllChildren(); 
                 currentState = config.END_STATE;
                 changeState();
@@ -50,7 +51,7 @@
              game.addChild(city);
 
         // add plane object to stage
-             plane = new objects.Plane(assets.getResult("plane"));
+             plane = new objects.playerControl(assets.getResult("plane"));
              game.addChild(plane);
 
 

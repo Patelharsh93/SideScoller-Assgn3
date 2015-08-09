@@ -7,6 +7,7 @@
 /// <reference path="utility/utility.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/city.ts" />
+/// <reference path="objects/playercontrol.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/fuel.ts" />
 /// <reference path="objects/fire.ts" />
