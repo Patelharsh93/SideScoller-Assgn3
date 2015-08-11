@@ -1,5 +1,5 @@
 ﻿module states {
-    export class Play {
+     export class Play {
 
         //Constructor+++++++++++++++++++++++++++
         constructor() {
@@ -13,10 +13,10 @@
 
             plane.update();
 
-            
+            bulletManager.update();
             fuel.update();
 
-            for (var fire = 0; fire < 4; fire++) {
+            for (var fire = 0; fire < 5; fire++) {
                 fires[fire].update();
                 collision.check(fires[fire]);
             }
@@ -49,16 +49,20 @@
         // add city object to stage
              city = new objects.City(assets.getResult("city"));
              game.addChild(city);
+  
 
         // add plane object to stage
              plane = new objects.playerControl(assets.getResult("plane"));
              game.addChild(plane);
 
+             // instantiate my bullet manager object
+             bulletManager = new managers.BulletManager();
+
 
     
 
-        // add 3 fire objects to stage
-        for (var fire = 0; fire < 4; fire++) {
+        // add 5 fire objects to stage
+        for (var fire = 0; fire < 5; fire++) {
             fires[fire] = new objects.Fire(assets.getResult("rocket"));
             game.addChild(fires[fire]);
         }

@@ -9,6 +9,7 @@
 
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/city.ts" />
+/// <reference path="objects/bullet.ts" />
 /// <reference path="objects/playercontrol.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/fuel.ts" />
@@ -19,11 +20,14 @@
 /// <reference path="objects/button.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="managers/collision.ts" />
+/// <reference path="managers/collision.ts" />
 
 /// <reference path="states/instructions.ts" />
 /// <reference path="states/end.ts" />
 /// <reference path="states/start.ts" />
 /// <reference path="states/play.ts" />
+/// <reference path="states/play_hard_state.ts" />
+/// <reference path="states/play_easy_state.ts" />
 
 //Game framework variable
 
@@ -38,7 +42,10 @@ var manifest = [
     { id: "plane", src: "assets/images/plane2.png" },
     { id: "fuel", src: "assets/images/fuel.png" },
     { id: "rocket", src: "assets/images/rocket.png" },
-    { id: "startgame1", src: "assets/images/startgame1.png" },
+    { id: "bullet", src: "assets/images/bullet.jpg" },
+    { id: "easy", src: "assets/images/easy.jpg" },
+    { id: "normal", src: "assets/images/normal.jpg" },
+    { id: "hard", src: "assets/images/hard.jpg" },
     { id: "again", src: "assets/images/playagain1.png" },
     { id: "instructions", src: "assets/images/instructions.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
@@ -50,9 +57,12 @@ var manifest = [
 // Game Variables
 var city: objects.City;
 var plane: objects.playerControl;
+var bullet: objects.Bullet;
 var fuel: objects.Fuel;
 var again: objects.Button;
 var startgame1: objects.Button;
+var startGameEasy: objects.Button;
+var startGameHard: objects.Button;
 var instructions: objects.Button;
 var fires = [];
 var scoreBoard: objects.scoreboard;
@@ -74,6 +84,9 @@ var start: states.Start;
 var instruction: states.Instruction;
 var end: states.End;
 var play: states.Play;
+var playEasy: states.PLAY_EASY_STATE;
+var playHard: states.PLAY_HARD_STATE;
+var bulletManager: managers.BulletManager;
 
 
 
@@ -155,6 +168,16 @@ function changeState() {
     //// instantiate start state
             play = new states.Play();
             currentStateFunction = play;
+            break;
+        case config.PLAY_EASY_STATE:
+            //// instantiate start state
+            playEasy = new states.PLAY_EASY_STATE();
+            currentStateFunction = playEasy;
+            break;
+        case config.PLAY_HARD_STATE:
+            //// instantiate start state
+            playHard = new states.PLAY_HARD_STATE();
+            currentStateFunction = playHard;
             break;
 
         case config.END_STATE:

@@ -17,7 +17,9 @@ var config;
     config.START_STATE = 0;
     config.INSTRUCTION_STATE = 1;
     config.PLAY_STATE = 2;
-    config.END_STATE = 3;
+    config.PLAY_EASY_STATE = 3;
+    config.PLAY_HARD_STATE = 4;
+    config.END_STATE = 5;
     // key constants
     config.KEY_BACK = 37;
     config.KEY_FORWARD = 39;
@@ -33,9 +35,12 @@ var config;
     config.BACK = false;
     config.UP = false;
     config.DOWN = false;
+    config.FIRING = false;
     // PlayerControl constants
     config.PLAYER_MOVEMENT = 5;
     config.PLAYER_UP = 5;
     config.PLAYER_DOWN = 5;
+    // bullet constants
+    config.BULLET_SPEED = 10;
 })(config || (config = {}));
 //# sourceMappingURL=config.js.map

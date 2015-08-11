@@ -5,11 +5,13 @@
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         constructor(imageString: string) {
             super(imageString);
+            this.name = "plane";
             this.sound = "engine";
             this._init(); // initialize avatar
             this._assignControls();
         }
 
+      
         // PRIVATE METHODS +++++++++++++++++++++++++++++
         private _init() {
             this.x = 320;
@@ -45,6 +47,9 @@
                 case config.KEY_DOWN:
                     config.DOWN = true;
                     break;
+                case config.KEY_SPACE:
+                    config.FIRING = true;
+                    break;
             }
         }
 
@@ -67,6 +72,9 @@
                 case config.KEY_DOWN:
                     config.DOWN = false;
                     break;
+                case config.KEY_SPACE:
+                    config.FIRING = false;
+                    break;
             }
         }
 
@@ -81,21 +89,21 @@
 
             // Execute right turn
             if (config.FORWARD) {
-                if (this.x < 625) {
+                if (this.x < 600) {
                     this.slideForward();
                 }
             }
 
             // Forward Movement
             if (config.UP) {
-                if (this.y > 0) {
+                if (this.y > 50) {
                     this.slideUp();
                 }
             }
 
             // Reverse Movement
             if (config.DOWN) {
-                if (this.y < 450) {
+                if (this.y < 400) {
                     this.slideDown();
                 }
             }

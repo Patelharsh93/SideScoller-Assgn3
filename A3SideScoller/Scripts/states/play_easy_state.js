@@ -1,19 +1,19 @@
 var states;
 (function (states) {
-    var Play = (function () {
+    var PLAY_EASY_STATE = (function () {
         //Constructor+++++++++++++++++++++++++++
-        function Play() {
+        function PLAY_EASY_STATE() {
             this.main();
         }
         //PUBLIC METHODS
         //UPDATE METHODS
-        Play.prototype.update = function () {
+        PLAY_EASY_STATE.prototype.update = function () {
             //update functions
             city.update();
             plane.update();
             bulletManager.update();
             fuel.update();
-            for (var fire = 0; fire < 5; fire++) {
+            for (var fire = 0; fire < 4; fire++) {
                 fires[fire].update();
                 collision.check(fires[fire]);
             }
@@ -21,7 +21,7 @@ var states;
             this.checkLives();
             scoreBoard.update();
         };
-        Play.prototype.checkLives = function () {
+        PLAY_EASY_STATE.prototype.checkLives = function () {
             if (scoreBoard.lives < 1) {
                 game.removeAllChildren();
                 currentState = config.END_STATE;
@@ -29,7 +29,7 @@ var states;
             }
         };
         //Our main function
-        Play.prototype.main = function () {
+        PLAY_EASY_STATE.prototype.main = function () {
             //instantiate new game container
             game = new createjs.Container();
             // add city object to stage
@@ -40,8 +40,8 @@ var states;
             game.addChild(plane);
             // instantiate my bullet manager object
             bulletManager = new managers.BulletManager();
-            // add 5 fire objects to stage
-            for (var fire = 0; fire < 5; fire++) {
+            // add 3 fire objects to stage
+            for (var fire = 0; fire < 4; fire++) {
                 fires[fire] = new objects.Fire(assets.getResult("rocket"));
                 game.addChild(fires[fire]);
             }
@@ -55,8 +55,8 @@ var states;
             //add game container to the stage
             stage.addChild(game);
         };
-        return Play;
+        return PLAY_EASY_STATE;
     })();
-    states.Play = Play;
+    states.PLAY_EASY_STATE = PLAY_EASY_STATE;
 })(states || (states = {}));
-//# sourceMappingURL=play.js.map
+//# sourceMappingURL=play_easy_state.js.map

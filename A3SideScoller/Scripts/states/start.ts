@@ -21,8 +21,22 @@
         {
             game.removeAllChildren();
             currentState = config.PLAY_STATE;
+            changeState();            
+        }
+
+        public startgameeasyClick(event: MouseEvent) {
+            game.removeAllChildren();
+            currentState = config.PLAY_EASY_STATE;
             changeState();
-            
+            startGameEasy.off("click", this.startgameeasyClick);
+
+        }
+        public startgamehardClick(event: MouseEvent) {
+            game.removeAllChildren();
+            currentState = config.PLAY_EASY_STATE;
+            changeState();
+            startGameHard.off("click", this.startgamehardClick);
+
         }
 
         public instructionsClick(event:MouseEvent)
@@ -44,14 +58,23 @@
 
 
             // add Mail Pilot Label
-            var label: objects.Label = new objects.Label("SIDE SCROLLER", config.FONT_EXTRA_LARGE, config.FONT_FAMILY, config.YELLOW, 320, 140);
+            var label: objects.Label = new objects.Label("FIGHTER PLANE", config.FONT_EXTRA_LARGE, config.FONT_FAMILY, config.YELLOW, 320, 100);
             game.addChild(label);
             
             // add start game to stage
-            startgame1 = new objects.Button(assets.getResult("startgame1"), 250, 300);  
-            game.addChild(startgame1);          
-            startgame1.on("click", this.startgameClick);
+            startGameEasy = new objects.Button(assets.getResult("easy"), 250, 200);  
+            game.addChild(startGameEasy);          
+            startGameEasy.on("click", this.startgameeasyClick);
            
+            // add  easy start game to stage
+            startgame1 = new objects.Button(assets.getResult("normal"), 250, 250);
+            game.addChild(startgame1);
+            startgame1.on("click", this.startgameClick, this);
+
+            // add  easy start game to stage
+            startGameHard = new objects.Button(assets.getResult("hard"), 250, 300);
+            game.addChild(startGameHard);
+            startGameHard.on("click", this.startgamehardClick, this);
             
             // add instruction to stage
             instructions = new objects.Button(assets.getResult("instructions"),250,400);           

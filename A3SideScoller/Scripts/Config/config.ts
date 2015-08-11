@@ -20,7 +20,9 @@
     export const START_STATE: number = 0;
     export const INSTRUCTION_STATE: number = 1;
     export const PLAY_STATE: number = 2;
-    export const END_STATE: number = 3;
+    export const PLAY_EASY_STATE: number = 3;
+    export const PLAY_HARD_STATE: number = 4;
+    export const END_STATE: number = 5;
 
     // key constants
     export var KEY_BACK: number = 37;
@@ -38,9 +40,13 @@
     export var BACK: boolean = false;
     export var UP: boolean = false;
     export var DOWN: boolean = false;
+    export var FIRING: boolean = false;
 
     // PlayerControl constants
     export var PLAYER_MOVEMENT: number = 5;
     export var PLAYER_UP: number = 5;
     export var PLAYER_DOWN: number = 5;
+
+    // bullet constants
+    export const BULLET_SPEED: number = 10;
 } 
