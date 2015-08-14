@@ -46,9 +46,9 @@
             game = new createjs.Container();
 
 
-        // add city object to stage
-             city = new objects.City(assets.getResult("city"));
-             game.addChild(city);
+        // add space image object to stage
+             space = new objects.City(assets.getResult("space"));
+             game.addChild(space);
   
 
         // add plane object to stage

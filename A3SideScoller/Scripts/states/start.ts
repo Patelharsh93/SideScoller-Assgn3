@@ -17,13 +17,7 @@
         }
 
         //clicked events
-        public startgameClick(event:MouseEvent)
-        {
-            game.removeAllChildren();
-            currentState = config.PLAY_STATE;
-            changeState();            
-        }
-
+        
         public startgameeasyClick(event: MouseEvent) {
             game.removeAllChildren();
             currentState = config.PLAY_EASY_STATE;
@@ -31,6 +25,14 @@
             startGameEasy.off("click", this.startgameeasyClick);
 
         }
+
+        public startgameClick(event: MouseEvent) {
+            game.removeAllChildren();
+            currentState = config.PLAY_STATE;
+            changeState();
+            startgame1.off("click", this.startgameClick);
+        }
+ 
         public startgamehardClick(event: MouseEvent) {
             game.removeAllChildren();
             currentState = config.PLAY_EASY_STATE;
@@ -41,8 +43,10 @@
 
         public instructionsClick(event:MouseEvent)
         {
+            game.removeAllChildren();
             currentState = config.INSTRUCTION_STATE;
             changeState();
+            instructions.off("click", this.instructionsClick);
         }
 
 

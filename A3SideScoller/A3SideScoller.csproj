@@ -61,16 +61,19 @@
   <ItemGroup>
     <Content Include="assets\audio\powerup.wav" />
     <Content Include="assets\audio\thunder.wav" />
+    <Content Include="assets\images\goback.png" />
     <Content Include="assets\images\bullet.jpg" />
     <Content Include="assets\images\city.jpg" />
     <Content Include="assets\images\easy.jpg" />
     <Content Include="assets\images\fuel.png" />
     <Content Include="assets\images\hard.jpg" />
     <Content Include="assets\images\instructions.png" />
+    <Content Include="assets\images\keycontrols.png" />
     <Content Include="assets\images\normal.jpg" />
     <Content Include="assets\images\plane2.png" />
     <Content Include="assets\images\playagain1.png" />
     <Content Include="assets\images\rocket.png" />
+    <Content Include="assets\images\space.jpg" />
     <Content Include="packages.config" />
     <Content Include="assets\audio\engine.ogg" />
     <None Include="Web.Debug.config">

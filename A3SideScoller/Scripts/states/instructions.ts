@@ -10,34 +10,37 @@
             startgame1.update();
         }
 
+        // PUBLIC METHODS
+        // When Main Menu Button is Clicked
+        private gobackClick(event: MouseEvent) {
+            game.removeAllChildren();
+            currentState = config.START_STATE;
+            changeState();
+            stage.addChild(game);
+        }
+
         public main() {
             
             // Add Game Container
             game = new createjs.Container();            
 
-            // add start game to stage
-            startgame1 = new objects.Button(assets.getResult("startgame1"), 250, 300);
-            game.addChild(startgame1);
-            startgame1.on("click", this.startgameClick);   
+            // add city object to stage
+            city = new objects.City(assets.getResult("city"));
+            game.addChild(city);
+
+            // add  easy start game to stage
+            goback = new objects.Button(assets.getResult("goback"), 520, 100);
+            game.addChild(goback);
+            goback.on("click", this.gobackClick, this); 
             
-            // Add Instruction Label
-            var info = "COntrol the plane using mouse\n\n" +
-                "protect the avatar form the bullets upproaching towards it\n\n\n" +
-                "Collect fuel to score points\n\n" +
-                "Game ends when you collide 5 times with bullets\n\n\nGOOD LUCK!";
-            instructionLabel = new objects.Label(info, config.FONT_SMALL,config.FONT_FAMILY,config.RED,200,200);
-            game.removeAllChildren();
-            game.addChild(instructionLabel);
+            // add  key control image to stage
+            keycontrols = new objects.Button(assets.getResult("keys"), 250, 250);
+            game.addChild(keycontrols);
+            
+           
 
         }
 
-        // PUBLIC METHOD
-        // When Main Menu Button is Clicked
-        private startgameClick(event: MouseEvent) {
-            game.removeAllChildren();
-            currentState = config.PLAY_STATE;
-            changeState();
-            stage.addChild(game);
-        }
+       
     }
 }  

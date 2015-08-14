@@ -30,6 +30,7 @@ var stats;
 var assets;
 var manifest = [
     { id: "city", src: "assets/images/city.jpg" },
+    { id: "space", src: "assets/images/space.jpg" },
     { id: "plane", src: "assets/images/plane2.png" },
     { id: "fuel", src: "assets/images/fuel.png" },
     { id: "rocket", src: "assets/images/rocket.png" },
@@ -39,12 +40,15 @@ var manifest = [
     { id: "hard", src: "assets/images/hard.jpg" },
     { id: "again", src: "assets/images/playagain1.png" },
     { id: "instructions", src: "assets/images/instructions.png" },
+    { id: "goback", src: "assets/images/goback.png" },
+    { id: "keys", src: "assets/images/keycontrols.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "powerup", src: "assets/audio/powerup.wav" },
     { id: "thunder", src: "assets/audio/thunder.wav" },
 ];
 // Game Variables
 var city;
+var space;
 var plane;
 var bullet;
 var fuel;
@@ -53,6 +57,8 @@ var startgame1;
 var startGameEasy;
 var startGameHard;
 var instructions;
+var keycontrols;
+var goback;
 var fires = [];
 var scoreBoard;
 var game;
@@ -66,7 +72,7 @@ var collision;
 var currentStateFunction;
 var currentState;
 var start;
-var instruction;
+var inst;
 var end;
 var play;
 var playEasy;
@@ -126,8 +132,8 @@ function changeState() {
             break;
         case config.INSTRUCTION_STATE:
             //// instantiate instruction state
-            instruction = new states.Instruction();
-            currentStateFunction = instruction;
+            inst = new states.Instruction();
+            currentStateFunction = inst;
             break;
         case config.PLAY_STATE:
             //// instantiate start state

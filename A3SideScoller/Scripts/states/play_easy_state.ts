@@ -21,7 +21,7 @@
                 collision.check(fires[fire]);
             }
             collision.check(fuel);
-
+            
             this.checkLives();
 
             scoreBoard.update();

@@ -4,8 +4,7 @@
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         constructor(imageString: string) {
-            super(imageString);
-            this.name = "plane";
+            super(imageString);            
             this.sound = "engine";
             this._init(); // initialize avatar
             this._assignControls();
@@ -22,7 +21,7 @@
             this.dy = 0;
         }
 
-        // Bind key actions to player events
+        // Binding key actions to player events
         private _assignControls() {
             window.onkeydown = this._onControlDown;
             window.onkeyup = this._onControlUp;

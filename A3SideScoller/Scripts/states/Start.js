@@ -12,16 +12,17 @@ var states;
             instructions.update();
         };
         //clicked events
-        Start.prototype.startgameClick = function (event) {
-            game.removeAllChildren();
-            currentState = config.PLAY_STATE;
-            changeState();
-        };
         Start.prototype.startgameeasyClick = function (event) {
             game.removeAllChildren();
             currentState = config.PLAY_EASY_STATE;
             changeState();
             startGameEasy.off("click", this.startgameeasyClick);
+        };
+        Start.prototype.startgameClick = function (event) {
+            game.removeAllChildren();
+            currentState = config.PLAY_STATE;
+            changeState();
+            startgame1.off("click", this.startgameClick);
         };
         Start.prototype.startgamehardClick = function (event) {
             game.removeAllChildren();
@@ -30,8 +31,10 @@ var states;
             startGameHard.off("click", this.startgamehardClick);
         };
         Start.prototype.instructionsClick = function (event) {
+            game.removeAllChildren();
             currentState = config.INSTRUCTION_STATE;
             changeState();
+            instructions.off("click", this.instructionsClick);
         };
         //main function
         Start.prototype.main = function () {

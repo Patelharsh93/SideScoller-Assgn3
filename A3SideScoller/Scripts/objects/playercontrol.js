@@ -12,7 +12,6 @@ var objects;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         function playerControl(imageString) {
             _super.call(this, imageString);
-            this.name = "plane";
             this.sound = "engine";
             this._init(); // initialize avatar
             this._assignControls();
@@ -26,7 +25,7 @@ var objects;
             this.dx = 0;
             this.dy = 0;
         };
-        // Bind key actions to player events
+        // Binding key actions to player events
         playerControl.prototype._assignControls = function () {
             window.onkeydown = this._onControlDown;
             window.onkeyup = this._onControlUp;

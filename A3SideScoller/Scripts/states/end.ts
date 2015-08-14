@@ -14,7 +14,7 @@
         }
         public againClicked(event: MouseEvent)
         {
-            currentState = config.PLAY_STATE;
+            currentState = config.START_STATE;
             changeState();
         }
 

@@ -39,6 +39,7 @@ var stats: Stats;
 var assets: createjs.LoadQueue;
 var manifest = [
     { id: "city", src: "assets/images/city.jpg" },
+    { id: "space", src: "assets/images/space.jpg" },
     { id: "plane", src: "assets/images/plane2.png" },
     { id: "fuel", src: "assets/images/fuel.png" },
     { id: "rocket", src: "assets/images/rocket.png" },
@@ -48,6 +49,8 @@ var manifest = [
     { id: "hard", src: "assets/images/hard.jpg" },
     { id: "again", src: "assets/images/playagain1.png" },
     { id: "instructions", src: "assets/images/instructions.png" },
+    { id: "goback", src: "assets/images/goback.png" },
+    { id: "keys", src: "assets/images/keycontrols.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "powerup", src: "assets/audio/powerup.wav" },
     { id: "thunder", src: "assets/audio/thunder.wav" },
@@ -56,6 +59,7 @@ var manifest = [
 
 // Game Variables
 var city: objects.City;
+var space: objects.City;
 var plane: objects.playerControl;
 var bullet: objects.Bullet;
 var fuel: objects.Fuel;
@@ -64,6 +68,8 @@ var startgame1: objects.Button;
 var startGameEasy: objects.Button;
 var startGameHard: objects.Button;
 var instructions: objects.Button;
+var keycontrols: objects.Button;
+var goback: objects.Button;
 var fires = [];
 var scoreBoard: objects.scoreboard;
 var game: createjs.Container;
@@ -81,7 +87,7 @@ var collision: managers.Collision;
 var currentStateFunction;
 var currentState: number;
 var start: states.Start;
-var instruction: states.Instruction;
+var inst: states.Instruction;
 var end: states.End;
 var play: states.Play;
 var playEasy: states.PLAY_EASY_STATE;
@@ -160,8 +166,8 @@ function changeState() {
 
         case config.INSTRUCTION_STATE:
             //// instantiate instruction state
-            instruction = new states.Instruction();
-            currentStateFunction = instruction;
+            inst = new states.Instruction();
+            currentStateFunction = inst;
             break;
 
         case config.PLAY_STATE:

@@ -10,7 +10,7 @@ var states;
             again.update();
         };
         End.prototype.againClicked = function (event) {
-            currentState = config.PLAY_STATE;
+            currentState = config.START_STATE;
             changeState();
         };
         End.prototype.main = function () {

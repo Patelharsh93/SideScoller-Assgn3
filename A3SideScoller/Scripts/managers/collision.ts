@@ -28,8 +28,10 @@
                         scoreBoard.lives--;
                     }
                     if (gameObject.name == "fuel") {
-                        scoreBoard.score += 100;
+                        scoreBoard.score += 100;        
+                        game.removeChild(fuel);             
                     }
+                    
                 }
                 gameObject.isColliding = true;
 
